@@ -1,0 +1,27 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+
+const App = () => {
+  return (
+    <Router>
+      {/* Global Toaster (available for all pages) */}
+      <Toaster position="top-right" reverseOrder={false} />
+
+      <Routes>
+        {/* Redirect "/" to "/login" */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
+
+        {/* Login Page */}
+        <Route path="/login" element={<Login />} />
+
+        {/* Dashboard Page */}
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
