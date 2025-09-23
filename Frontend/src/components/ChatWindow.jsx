@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Phone, Video, Info, Smile, Image, Mic, ThumbsUp } from "lucide-react";
 
 const ChatWindow = () => {
@@ -19,12 +19,26 @@ const ChatWindow = () => {
     { id: 14, sender: "other", text: "Sige ra pajug pareport" },
     { id: 15, sender: "other", text: "Sige ra pajug pareport" },
     { id: 16, sender: "me", text: "Sige ra pajug pareport" },
+    { id: 17, sender: "other", text: "Sige ra pajug pareport" },
+    { id: 18, sender: "other", text: "Sige ra pajug pareport" },
+    { id: 19, sender: "me", text: "Sige ra pajug pareport" },
+    { id: 20, sender: "other", text: "Sige ra pajug pareport" },
+    { id: 21, sender: "other", text: "Sige ra pajug pareport" },
+    { id: 22, sender: "me", text: "Sige ra pajug pareport" },
   ];
 
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
   return (
-    <div className="flex flex-col h-full bg-gray-50 ">
+    <div className="flex flex-col h-full bg-gray-50">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b bg-white shadow-sm border-gray-300">
+      <div className="flex items-center justify-between h-[101px] p-4 border-b bg-white shadow-sm border-gray-300">
         <div className="flex items-center space-x-3">
           <div className="relative">
             <img
@@ -32,7 +46,6 @@ const ChatWindow = () => {
               alt="Disciple #1"
               className="w-10 h-10 rounded-full object-cover"
             />
-            {/* Green circle online indicator */}
             <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
           </div>
           <div>
@@ -47,43 +60,41 @@ const ChatWindow = () => {
         </div>
       </div>
 
-      {/* Messages */}
-<div className="flex-1 overflow-y-auto px-6 py-4 space-y-4 bg-gray-100">
-  {messages.map((msg) => (
-    <div
-      key={msg.id}
-      className={`flex items-end space-x-2 ${
-        msg.sender === "me" ? "justify-end" : "justify-start"
-      }`}
-    >
-      {/* Show avatar only for "other" */}
-      {msg.sender === "other" && (
-        <div className="relative">
-          <img
-            src="https://i.pravatar.cc/40?img=11"
-            alt="Other User"
-            className="w-8 h-8 rounded-full object-cover"
-          />
-          <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-white rounded-full"></span>
+      {/* Messages Box (scrollable) */}
+      <div className="flex-1 px-6 py-4 bg-gray-100">
+        <div className="h-full max-h-[70vh] overflow-y-auto space-y-4 pr-2">
+          {messages.map((msg) => (
+            <div
+              key={msg.id}
+              className={`flex items-end space-x-2 ${
+                msg.sender === "me" ? "justify-end" : "justify-start"
+              }`}
+            >
+              {msg.sender === "other" && (
+                <div className="relative">
+                  <img
+                    src="https://i.pravatar.cc/40?img=11"
+                    alt="Other User"
+                    className="w-8 h-8 rounded-full object-cover"
+                  />
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-white rounded-full"></span>
+                </div>
+              )}
+
+              <div
+                className={`px-4 py-2 rounded-lg max-w-xs text-sm break-words ${
+                  msg.sender === "me"
+                    ? "bg-purple-600 text-white rounded-br-none"
+                    : "bg-gray-200 text-gray-800 rounded-bl-none"
+                }`}
+              >
+                {msg.text}
+              </div>
+            </div>
+          ))}
+          <div ref={messagesEndRef}></div>
         </div>
-      )}
-
-      <div
-        className={`px-4 py-2 rounded-lg max-w-xs text-sm break-words ${
-          msg.sender === "me"
-            ? "bg-purple-600 text-white rounded-br-none"
-            : "bg-gray-200 text-gray-800 rounded-bl-none"
-        }`}
-      >
-        {msg.text}
       </div>
-    </div>
-  ))}
-
-  {/* Example timestamp */}
-  <p className="text-center text-xs text-gray-400 my-2">Sat 11:23 PM</p>
-</div>
-
 
       {/* Input Area */}
       <div className="flex items-center p-3 border-t bg-white space-x-3 border-gray-300">

@@ -20,7 +20,7 @@ const ProfilePanel = () => {
   return (
     <div className="w-full h-full bg-white text-gray-800 flex flex-col border-l border-gray-200">
       {/* Profile header */}
-      <div className="flex flex-col items-center py-6 px-4 border-b border-gray-200">
+      <div className="flex flex-col items-center py-6 px-4 border-b border-gray-200 mt-4">
         <img
           src="https://i.pravatar.cc/100?img=20"
           alt="Profile"

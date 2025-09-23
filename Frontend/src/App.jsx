@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import { Toaster } from "react-hot-toast";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Register from "./pages/Register";
 
 const App = () => {
   return (
@@ -11,15 +12,19 @@ const App = () => {
       <Toaster position="top-right" reverseOrder={false} />
 
       <Routes>
-        {/* Redirect "/" to "/login" */}
-        <Route path="/" element={<Navigate to="/login" replace />} />
+      {/* Redirect "/" to "/login" */}
+      <Route path="/" element={<Navigate to="/login" replace />} />
 
-        {/* Login Page */}
-        <Route path="/login" element={<Login />} />
+      {/* Login Page */}
+      <Route path="/login" element={<Login />} />
 
-        {/* Dashboard Page */}
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
+      {/* Register Page */}
+      <Route path="/register" element={<Register />} />  {/* ✅ new */}
+
+      {/* Dashboard Page */}
+      <Route path="/dashboard" element={<Dashboard />} />
+    </Routes>
+
     </Router>
   );
 };

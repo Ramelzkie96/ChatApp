@@ -46,19 +46,7 @@ const Sidebar = () => {
 
   return (
     <div className="h-full flex flex-col bg-white border-r border-gray-200">
-      {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200">
-        {/* Title */}
-        <h1 className="text-xl font-bold text-blue-600">ChatApp</h1>
-
-        {/* Icons */}
-        <div className="flex items-center space-x-3">
-          <button className="p-2 rounded-full hover:bg-gray-100">
-            <MoreVertical className="w-5 h-5 text-gray-600" />
-          </button>
-         
-        </div>
-      </div>
+      
 
       {/* Search Bar */}
       <div className="p-3">
