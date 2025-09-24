@@ -9,18 +9,39 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (password !== confirmPassword) {
-      toast.error("Passwords do not match");
-      return;
+  if (password !== confirmPassword) {
+    toast.error("Passwords do not match");
+    return;
+  }
+
+  try {
+    const response = await fetch("https://localhost:5001/api/users/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username,
+        email,
+        passwordHash: password, // backend hashes it
+        profilePicture: "", // optional
+      }),
+    });
+
+    if (response.ok) {
+      toast.success("Account created successfully!");
+      navigate("/login");
+    } else {
+      const errorData = await response.json();
+      toast.error(errorData.message || "Registration failed");
     }
+  } catch (error) {
+    console.error("Error:", error);
+    toast.error("Something went wrong. Please try again.");
+  }
+};
 
-    // Dummy register success
-    toast.success("Account created successfully!");
-    navigate("/login");
-  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-white to-purple-100">
