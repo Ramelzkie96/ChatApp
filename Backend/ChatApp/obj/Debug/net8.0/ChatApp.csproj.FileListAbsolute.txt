@@ -171,3 +171,4 @@ C:\Users\ssasg\source\repos\ChatApp\Backend\ChatApp\obj\Debug\net8.0\refint\Chat
 C:\Users\ssasg\source\repos\ChatApp\Backend\ChatApp\obj\Debug\net8.0\ChatApp.pdb
 C:\Users\ssasg\source\repos\ChatApp\Backend\ChatApp\obj\Debug\net8.0\ChatApp.genruntimeconfig.cache
 C:\Users\ssasg\source\repos\ChatApp\Backend\ChatApp\obj\Debug\net8.0\ref\ChatApp.dll
+C:\Users\ssasg\source\repos\ChatApp\Backend\ChatApp\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

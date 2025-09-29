@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -10,38 +10,44 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (password !== confirmPassword) {
-    toast.error("Passwords do not match");
-    return;
-  }
-
-  try {
-    const response = await fetch("https://localhost:5001/api/users/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username,
-        email,
-        passwordHash: password, // backend hashes it
-        profilePicture: "", // optional
-      }),
-    });
-
-    if (response.ok) {
-      toast.success("Account created successfully!");
-      navigate("/login");
-    } else {
-      const errorData = await response.json();
-      toast.error(errorData.message || "Registration failed");
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
     }
-  } catch (error) {
-    console.error("Error:", error);
-    toast.error("Something went wrong. Please try again.");
-  }
-};
 
+    try {
+      const response = await fetch("https://localhost:7085/api/users/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username,
+          email,
+          passwordHash: password, // ✅ backend hashes it
+          profilePictureUrl: "",  // ✅ backend sets default if empty
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Account created successfully!");
+        navigate("/login");
+      } else {
+        const errorData = await response.json();
+        toast.error(errorData.message || "Registration failed");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Something went wrong. Please try again.");
+    }
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/dashboard"); // already logged in → redirect
+    }
+  }, [navigate]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-white to-purple-100">

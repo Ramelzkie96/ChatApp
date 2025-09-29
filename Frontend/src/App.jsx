@@ -4,12 +4,13 @@ import { Toaster } from "react-hot-toast";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 const App = () => {
   return (
     <Router>
       {/* Global Toaster (available for all pages) */}
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="bottom-right" reverseOrder={false} />
 
       <Routes>
       {/* Redirect "/" to "/login" */}
@@ -22,8 +23,7 @@ const App = () => {
       <Route path="/register" element={<Register />} />  {/* ✅ new */}
 
       {/* Dashboard Page */}
-      <Route path="/dashboard" element={<Dashboard />} />
-    </Routes>
+      <Route path="/dashboard" element={<ProtectedRoute> <Dashboard /> </ProtectedRoute>}/></Routes>
 
     </Router>
   );

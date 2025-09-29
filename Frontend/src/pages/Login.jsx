@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -7,17 +7,47 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Dummy login
-    if (username === "demo" && password === "1234") {
-      // ✅ no toast here, just send state to Dashboard
-      navigate("/dashboard", { state: { showSuccess: true } });
-    } else {
-      toast.error("Invalid username or password");
+    try {
+      const response = await fetch("https://localhost:7085/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username,
+          password, // plain password (backend hashes internally)
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+
+        // ✅ Save token + user info
+        localStorage.setItem("token", data.token); 
+        localStorage.setItem("user", JSON.stringify(data.user));
+
+        toast.success("Login successful!");
+
+        // ✅ Redirect after login
+        navigate("/dashboard", { state: { showSuccess: true } });
+      } else {
+        const error = await response.json();
+        toast.error(error.message || "Login failed");
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      toast.error("Something went wrong");
     }
   };
+
+  useEffect(() => {
+    // If already logged in → redirect to dashboard
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-white to-purple-100">
@@ -65,8 +95,9 @@ const Login = () => {
 
         <p className="text-sm text-gray-500 text-center mt-6">
           Don’t have an account?{" "}
-          <span className="text-blue-600 hover:underline cursor-pointer"
-            onClick={() => navigate("/register")}  // ✅ navigate to /register
+          <span
+            className="text-blue-600 hover:underline cursor-pointer"
+            onClick={() => navigate("/register")}
           >
             Register
           </span>

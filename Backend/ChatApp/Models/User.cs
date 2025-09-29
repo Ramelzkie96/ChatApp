@@ -7,7 +7,13 @@
         public string Email { get; set; }
         public string PasswordHash { get; set; } // hashed, not plain text
 
-        // ✅ New: Profile Picture URL (default if none is uploaded)
+        // ✅ Profile Picture URL (default if none is uploaded)
         public string ProfilePictureUrl { get; set; } = "/images/user-image.jpg";
+
+        // ✅ New: Online/Offline status
+        public bool IsOnline { get; set; } = false;
+
+        // ✅ Friendships related to this user
+        public ICollection<Friendship> Friendships { get; set; } = new List<Friendship>();
     }
 }
