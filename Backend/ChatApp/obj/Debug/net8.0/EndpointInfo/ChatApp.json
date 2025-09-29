@@ -147,6 +147,27 @@
         }
       }
     },
+    "/api/UserSearch": {
+      "get": {
+        "tags": [
+          "UserSearch"
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/WeatherForecast": {
       "get": {
         "tags": [

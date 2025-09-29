@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import AllChats from "./AllChats";
+import axios from "axios";
 
-const ChatSearchArea = ({ chats, searchQuery, setSearchQuery, onBack }) => {
-  // ✅ Filter chats by search query
-  const filteredChats = chats.filter((chat) =>
-    chat.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+const ChatSearchArea = ({ onBack, onSelectChat }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      if (!searchQuery) {
+        setResults([]);
+        return;
+      }
+      try {
+        const res = await axios.get(
+          `https://localhost:7085/api/UserSearch?query=${searchQuery}`
+        );
+        setResults(res.data);
+      } catch (err) {
+        console.error("Search failed:", err);
+      }
+    };
+
+    // ✅ debounce (wait 400ms after typing)
+    const timeout = setTimeout(fetchUsers, 400);
+    return () => clearTimeout(timeout);
+  }, [searchQuery]);
 
   return (
     <div className="h-full flex flex-col">
@@ -30,15 +50,17 @@ const ChatSearchArea = ({ chats, searchQuery, setSearchQuery, onBack }) => {
 
       {/* Header for contacts */}
       <div className="px-3 py-2 border-b border-gray-200 font-semibold text-gray-700">
-        Your Contacts
+        Search Results
       </div>
 
-      {/* Filtered chats */}
+      {/* Results */}
       <div className="flex-1 overflow-y-auto mt-2">
-        {filteredChats.length > 0 ? (
-          <AllChats chats={filteredChats} />
+        {results.length > 0 ? (
+          <AllChats chats={results} onSelectChat={onSelectChat} />
         ) : (
-          <p className="text-center text-gray-500 mt-5">No contacts found.</p>
+          <p className="text-center text-gray-500 mt-5">
+            {searchQuery ? "No users found." : "Start typing to search."}
+          </p>
         )}
       </div>
     </div>
