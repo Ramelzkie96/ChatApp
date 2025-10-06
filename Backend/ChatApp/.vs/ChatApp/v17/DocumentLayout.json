@@ -1,66 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\",
+  "WorkspaceRootPath": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\asus\\documents\\react asp net mvc\\chatapp\\chatapp\\backend\\chatapp\\controllers\\usersearchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:controllers\\usersearchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\ssasg\\source\\repos\\chatapp\\backend\\chatapp\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\asus\\documents\\react asp net mvc\\chatapp\\chatapp\\backend\\chatapp\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\asus\\documents\\react asp net mvc\\chatapp\\chatapp\\backend\\chatapp\\models\\friendship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:models\\friendship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\asus\\documents\\react asp net mvc\\chatapp\\chatapp\\backend\\chatapp\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\asus\\documents\\react asp net mvc\\chatapp\\chatapp\\backend\\chatapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\asus\\documents\\react asp net mvc\\chatapp\\chatapp\\backend\\chatapp\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\asus\\documents\\react asp net mvc\\chatapp\\chatapp\\backend\\chatapp\\controllers\\chatlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:controllers\\chatlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\asus\\documents\\react asp net mvc\\chatapp\\chatapp\\backend\\chatapp\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\asus\\documents\\react asp net mvc\\chatapp\\chatapp\\backend\\chatapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\asus\\documents\\react asp net mvc\\chatapp\\chatapp\\backend\\chatapp\\models\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:models\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\asus\\documents\\react asp net mvc\\chatapp\\chatapp\\backend\\chatapp\\migrations\\20250925131840_addisonlinetouser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:migrations\\20250925131840_addisonlinetouser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\asus\\documents\\react asp net mvc\\chatapp\\chatapp\\backend\\chatapp\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\asus\\documents\\react asp net mvc\\chatapp\\chatapp\\backend\\chatapp\\chatapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:chatapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\asus\\documents\\react asp net mvc\\chatapp\\chatapp\\backend\\chatapp\\migrations\\20250923070516_addprofilepicturetouser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:migrations\\20250923070516_addprofilepicturetouser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\asus\\documents\\react asp net mvc\\chatapp\\chatapp\\backend\\chatapp\\migrations\\20250927045856_addfriendshiptable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:migrations\\20250927045856_addfriendshiptable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\ssasg\\source\\repos\\chatapp\\backend\\chatapp\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -75,195 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UserSearchController.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Controllers\\UserSearchController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserSearchController.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Controllers\\UserSearchController.cs",
-              "RelativeToolTip": "Controllers\\UserSearchController.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAADwvyQAAAAJAAAAAAAAAA==",
+              "Title": "MessagesController.cs",
+              "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Controllers\\MessagesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MessagesController.cs",
+              "ToolTip": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Controllers\\MessagesController.cs",
+              "RelativeToolTip": "Controllers\\MessagesController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAwEgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T13:43:03.356Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Friendship.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Models\\Friendship.cs",
-              "RelativeDocumentMoniker": "Models\\Friendship.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Models\\Friendship.cs",
-              "RelativeToolTip": "Models\\Friendship.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-27T04:53:03.873Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ChatListController.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Controllers\\ChatListController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ChatListController.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Controllers\\ChatListController.cs",
-              "RelativeToolTip": "Controllers\\ChatListController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBgAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-25T13:32:32.44Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAByAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-09-23T05:12:47.32Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Models\\User.cs",
-              "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Models\\User.cs",
-              "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-23T06:42:31.423Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "20250927045856_AddFriendshipTable.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Migrations\\20250927045856_AddFriendshipTable.cs",
-              "RelativeDocumentMoniker": "Migrations\\20250927045856_AddFriendshipTable.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Migrations\\20250927045856_AddFriendshipTable.cs",
-              "RelativeToolTip": "Migrations\\20250927045856_AddFriendshipTable.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-27T04:58:57.118Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "20250925131840_AddIsOnlineToUser.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Migrations\\20250925131840_AddIsOnlineToUser.cs",
-              "RelativeDocumentMoniker": "Migrations\\20250925131840_AddIsOnlineToUser.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Migrations\\20250925131840_AddIsOnlineToUser.cs",
-              "RelativeToolTip": "Migrations\\20250925131840_AddIsOnlineToUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-25T13:18:41.96Z",
+              "WhenOpened": "2025-10-05T14:05:29.762Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "Controllers\\UsersController.cs",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAswGAAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-24T05:34:09.614Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ChatController.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Controllers\\ChatController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ChatController.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Controllers\\ChatController.cs",
-              "RelativeToolTip": "Controllers\\ChatController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T09:56:59.874Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "LoginDto.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Models\\LoginDto.cs",
-              "RelativeDocumentMoniker": "Models\\LoginDto.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Models\\LoginDto.cs",
-              "RelativeToolTip": "Models\\LoginDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-25T02:34:43.82Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "TestController.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Controllers\\TestController.cs",
-              "RelativeDocumentMoniker": "Controllers\\TestController.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Controllers\\TestController.cs",
-              "RelativeToolTip": "Controllers\\TestController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-24T01:34:38.942Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "20250923070516_AddProfilePictureToUser.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Migrations\\20250923070516_AddProfilePictureToUser.cs",
-              "RelativeDocumentMoniker": "Migrations\\20250923070516_AddProfilePictureToUser.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Migrations\\20250923070516_AddProfilePictureToUser.cs",
-              "RelativeToolTip": "Migrations\\20250923070516_AddProfilePictureToUser.cs",
+              "Title": "Message.cs",
+              "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Models\\Message.cs",
+              "RelativeDocumentMoniker": "Models\\Message.cs",
+              "ToolTip": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Models\\Message.cs",
+              "RelativeToolTip": "Models\\Message.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-23T07:05:23.88Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ApplicationDBContext.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Data\\ApplicationDBContext.cs",
-              "RelativeDocumentMoniker": "Data\\ApplicationDBContext.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Data\\ApplicationDBContext.cs",
-              "RelativeToolTip": "Data\\ApplicationDBContext.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAUwCUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-23T05:19:53.269Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ChatApp.csproj",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\ChatApp.csproj",
-              "RelativeDocumentMoniker": "ChatApp.csproj",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\ChatApp.csproj",
-              "RelativeToolTip": "ChatApp.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-09-23T05:19:27.788Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAawEwAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-23T05:04:07.58Z",
+              "WhenOpened": "2025-10-05T08:13:23.339Z",
               "EditorCaption": ""
             }
           ]

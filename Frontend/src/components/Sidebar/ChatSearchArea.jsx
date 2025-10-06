@@ -1,29 +1,64 @@
+// ChatSearchArea.jsx
 import React, { useEffect, useState } from "react";
-import { ArrowLeft } from "lucide-react";
-import AllChats from "./AllChats";
 import axios from "axios";
+import ChatListItem from "../ChatListItem";
 
-const ChatSearchArea = ({ onBack, onSelectChat }) => {
-  const [searchQuery, setSearchQuery] = useState("");
+const ChatSearchArea = ({ onBack, onSelectChat, searchQuery }) => {
   const [results, setResults] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchUsers = async () => {
-      if (!searchQuery) {
+      if (!searchQuery.trim()) {
         setResults([]);
+        setError(null);
         return;
       }
+
       try {
+        setLoading(true);
+        setError(null);
+
         const res = await axios.get(
           `https://localhost:7085/api/UserSearch?query=${searchQuery}`
         );
-        setResults(res.data);
+
+        console.log("✅ API response:", res.data);
+
+        // ✅ Get current user from localStorage
+        const currentUser = JSON.parse(localStorage.getItem("user"));
+
+        // ✅ Fix image URLs and filter out current user
+        const filteredResults = res.data
+          .filter((user) => user.id !== currentUser?.id) // 👈 prevent showing current user
+          .map((user) => ({
+            ...user,
+            profilePictureUrl: user.profilePictureUrl?.startsWith("http")
+              ? user.profilePictureUrl
+              : `https://localhost:7085${user.profilePictureUrl}`,
+          }));
+
+        setResults(filteredResults);
       } catch (err) {
-        console.error("Search failed:", err);
+        console.error("❌ Search failed:", err);
+
+        if (err.response) {
+          setError(
+            `Server error: ${err.response.status} ${err.response.statusText}`
+          );
+        } else if (err.request) {
+          setError("No response received from server.");
+        } else {
+          setError(`Unexpected error: ${err.message}`);
+        }
+
+        setResults([]);
+      } finally {
+        setLoading(false);
       }
     };
 
-    // ✅ debounce (wait 400ms after typing)
     const timeout = setTimeout(fetchUsers, 400);
     return () => clearTimeout(timeout);
   }, [searchQuery]);
@@ -32,35 +67,39 @@ const ChatSearchArea = ({ onBack, onSelectChat }) => {
     <div className="h-full flex flex-col">
       {/* Header */}
       <div className="p-3 flex items-center">
-        <button
-          onClick={onBack}
-          className="mr-2 text-gray-600 hover:text-gray-900"
-        >
-          <ArrowLeft className="w-5 h-5" />
-        </button>
-        <input
-          type="text"
-          placeholder="Search Contacts"
-          className="flex-1 pl-3 pr-4 py-2 text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          autoFocus
-        />
-      </div>
-
-      {/* Header for contacts */}
-      <div className="px-3 py-2 border-b border-gray-200 font-semibold text-gray-700">
-        Search Results
+        <span className="font-semibold text-gray-700">Search Results</span>
       </div>
 
       {/* Results */}
       <div className="flex-1 overflow-y-auto mt-2">
-        {results.length > 0 ? (
-          <AllChats chats={results} onSelectChat={onSelectChat} />
+        {loading && (
+          <p className="text-center text-blue-500 mt-5">Searching...</p>
+        )}
+
+        {error && <p className="text-center text-red-500 mt-5">⚠️ {error}</p>}
+
+        {!loading && !error && results.length > 0 ? (
+          results.map((user) => (
+            <ChatListItem
+              key={user.id}
+              chat={{
+                id: user.id,
+                name: user.userName ?? user.username,
+                avatar: user.profilePictureUrl || "/default-avatar.png",
+                isOnline: user.isOnline ?? false,
+                lastMessage: user.lastMessage || "",
+                timeAgo: user.timeAgo || "",
+              }}
+              onClick={onSelectChat}
+            />
+          ))
         ) : (
-          <p className="text-center text-gray-500 mt-5">
-            {searchQuery ? "No users found." : "Start typing to search."}
-          </p>
+          !loading &&
+          !error && (
+            <p className="text-center text-gray-500 mt-5">
+              {searchQuery ? "No users found." : "Start typing to search."}
+            </p>
+          )
         )}
       </div>
     </div>

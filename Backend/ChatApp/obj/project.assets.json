@@ -4878,23 +4878,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ASUS\\.nuget\\packages\\": {},
+    "C:\\Users\\ssasg\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\ChatApp.csproj",
+      "projectUniqueName": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\ChatApp.csproj",
       "projectName": "ChatApp",
-      "projectPath": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\ChatApp.csproj",
-      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\Documents\\REACT ASP NET MVC\\ChatApp\\ChatApp\\Backend\\ChatApp\\obj\\",
+      "projectPath": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\ChatApp.csproj",
+      "packagesPath": "C:\\Users\\ssasg\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ssasg\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4969,7 +4969,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

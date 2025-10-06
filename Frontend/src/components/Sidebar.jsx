@@ -1,11 +1,10 @@
-// src/components/Sidebar.jsx
 import React, { useEffect, useState } from "react";
-import { Search, ArrowLeft } from "lucide-react"; // ✅ Import ArrowLeft
-
+import { Search, ArrowLeft } from "lucide-react";
 import UnreadChats from "./Sidebar/UnreadChats";
 import RequestChats from "./Sidebar/RequestChats";
-import AllChats from "./Sidebar/AllChats"; // adjust path if needed
+import AllChats from "./Sidebar/AllChats";
 import GroupsChats from "./Sidebar/GroupsChats";
+import ChatSearchArea from "./Sidebar/ChatSearchArea";
 
 const Sidebar = ({ onSelectChat }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -41,10 +40,12 @@ const Sidebar = ({ onSelectChat }) => {
     fetchChats();
   }, [currentUser]);
 
-  // live filter for search
-  const filteredChats = chats.filter((c) =>
-    c.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const handleBackFromSearch = () => {
+    // 👇 Reset search and go back to AllChats view
+    setIsSearching(false);
+    setSearchQuery("");
+    setActiveCategory("All");
+  };
 
   const renderCategory = () => {
     switch (activeCategory) {
@@ -55,37 +56,36 @@ const Sidebar = ({ onSelectChat }) => {
       case "Request":
         return <RequestChats onSelectChat={onSelectChat} />;
       default:
-        return <AllChats chats={chats} onSelectChat={onSelectChat} />;
+        return (
+          <AllChats
+            currentUserId={currentUser?.id}
+            onSelectChat={onSelectChat}
+          />
+        );
     }
   };
 
   return (
     <div className="h-full flex flex-col bg-white border-r border-gray-200">
-      {/* Search / Header */}
+      {/* Header Search Bar */}
       <div className="p-3 flex items-center">
         <div className="relative flex-1 flex items-center">
-          {/* Back icon - only when searching */}
-          {isSearching && (
-            <ArrowLeft
-              className="w-5 h-5 text-gray-600 cursor-pointer mr-2"
-              onClick={() => {
-                setIsSearching(false);
-                setSearchQuery(""); // clear search when going back
-              }}
-            />
-          )}
-
-          {/* Search icon - only if not searching */}
-          {!isSearching && (
+          {/* 👇 Back arrow appears only when searching */}
+          {isSearching ? (
+            <button
+              onClick={handleBackFromSearch}
+              className="absolute left-3 top-2.5 text-gray-600 hover:text-gray-900 cursor-pointer"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+          ) : (
             <Search className="absolute left-3 top-2.5 w-5 h-5 text-gray-400" />
           )}
 
           <input
             type="text"
             placeholder="Search Messenger"
-            className={`w-full py-2 text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 ${
-              isSearching ? "pl-4" : "pl-10"
-            }`}
+            className="w-full py-2 text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 pl-10"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => setIsSearching(true)}
@@ -93,16 +93,16 @@ const Sidebar = ({ onSelectChat }) => {
         </div>
       </div>
 
+      {/* 👇 Search results vs normal chat list */}
       {isSearching ? (
-        <>
-          <div className="px-3 py-2 border-b border-gray-200 font-semibold text-gray-700">
-            Your Contacts
-          </div>
-          <div className="flex-1 overflow-y-auto mt-2">
-            {/* pass filtered list + handler */}
-            <AllChats chats={filteredChats} onSelectChat={onSelectChat} />
-          </div>
-        </>
+        <ChatSearchArea
+          searchQuery={searchQuery}
+          onBack={handleBackFromSearch}
+          onSelectChat={(chat) => {
+            onSelectChat(chat);
+            handleBackFromSearch(); // ✅ After clicking user, go back to AllChats
+          }}
+        />
       ) : (
         <>
           {/* Category Buttons */}

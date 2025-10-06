@@ -1,5 +1,4 @@
-﻿//using ChatApp.Models; // 👈 where your entity classes (like User, Message, etc.) will be
-using ChatApp.Models;
+﻿using ChatApp.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChatApp.Data
@@ -15,6 +14,7 @@ namespace ChatApp.Data
         // DbSets (tables in database)
         public DbSet<User> Users { get; set; }
         public DbSet<Friendship> Friendships { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace ChatApp.Data
             // ✅ Configure Friendship relationships
             modelBuilder.Entity<Friendship>()
                 .HasOne(f => f.Requester)
-                .WithMany() // later you can add a collection if needed
+                .WithMany()
                 .HasForeignKey(f => f.RequesterId)
                 .OnDelete(DeleteBehavior.Restrict);
 
@@ -32,6 +32,19 @@ namespace ChatApp.Data
                 .WithMany()
                 .HasForeignKey(f => f.AddresseeId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            // ✅ Configure Message relationships to avoid multiple cascade paths
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.Sender)
+                .WithMany()
+                .HasForeignKey(m => m.SenderId)
+                .OnDelete(DeleteBehavior.Restrict); // prevent cascade delete
+
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.Receiver)
+                .WithMany()
+                .HasForeignKey(m => m.ReceiverId)
+                .OnDelete(DeleteBehavior.Restrict); // prevent cascade delete
         }
     }
 }

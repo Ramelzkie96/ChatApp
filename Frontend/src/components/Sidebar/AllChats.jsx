@@ -9,10 +9,18 @@ const AllChats = ({ currentUserId, onSelectChat }) => {
   useEffect(() => {
     if (!currentUserId) return;
 
-    axios
-      .get(`/api/chat/friends/${currentUserId}`)
-      .then((res) => setFriends(res.data))
-      .catch((err) => console.error("Error fetching friends:", err));
+    const fetchFriends = async () => {
+      try {
+        const res = await axios.get(
+          `https://localhost:7085/api/chat/friends/${currentUserId}`
+        );
+        setFriends(res.data);
+      } catch (err) {
+        console.error("Error fetching friends:", err);
+      }
+    };
+
+    fetchFriends();
   }, [currentUserId]);
 
   if (!friends || friends.length === 0) {
@@ -26,7 +34,14 @@ const AllChats = ({ currentUserId, onSelectChat }) => {
       {friends.map((friend) => (
         <ChatListItem
           key={friend.id}
-          chat={friend}
+          chat={{
+            id: friend.id,
+            name: friend.username,             // ✅ match schema
+            avatar: friend.profilePictureUrl,  // ✅ avatar mapping
+            isOnline: friend.isOnline,
+            lastMessage: friend.lastMessage || "",
+            timeAgo: friend.timeAgo || ""
+          }}
           onClick={onSelectChat}
         />
       ))}
