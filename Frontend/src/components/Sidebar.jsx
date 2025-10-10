@@ -13,6 +13,11 @@ const Sidebar = ({ onSelectChat }) => {
   const [isSearching, setIsSearching] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
+  // 👇 Example counters — replace these with backend counts later
+  const [unreadCount, setUnreadCount] = useState(3);
+  const [groupCount, setGroupCount] = useState(5);
+  const [requestCount, setRequestCount] = useState(2);
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     setCurrentUser(user);
@@ -41,7 +46,6 @@ const Sidebar = ({ onSelectChat }) => {
   }, [currentUser]);
 
   const handleBackFromSearch = () => {
-    // 👇 Reset search and go back to AllChats view
     setIsSearching(false);
     setSearchQuery("");
     setActiveCategory("All");
@@ -65,12 +69,28 @@ const Sidebar = ({ onSelectChat }) => {
     }
   };
 
+ const renderBadge = (count) => {
+  if (!count || count <= 0) return null;
+  return (
+    <span className="absolute -top-1 -right-0.2 bg-red-500 text-white text-[10px] font-bold rounded-full px-[5px] py-[1px] shadow-sm">
+      {count}
+    </span>
+  );
+};
+
+
+  const categories = [
+    { name: "All" },
+    { name: "Unread", count: unreadCount },
+    { name: "Groups", count: groupCount },
+    { name: "Request", count: requestCount },
+  ];
+
   return (
     <div className="h-full flex flex-col bg-white border-r border-gray-200">
       {/* Header Search Bar */}
       <div className="p-3 flex items-center">
         <div className="relative flex-1 flex items-center">
-          {/* 👇 Back arrow appears only when searching */}
           {isSearching ? (
             <button
               onClick={handleBackFromSearch}
@@ -100,25 +120,27 @@ const Sidebar = ({ onSelectChat }) => {
           onBack={handleBackFromSearch}
           onSelectChat={(chat) => {
             onSelectChat(chat);
-            handleBackFromSearch(); // ✅ After clicking user, go back to AllChats
+            handleBackFromSearch();
           }}
         />
       ) : (
         <>
-          {/* Category Buttons */}
-          <div className="flex justify-between px-3 border-b border-gray-200">
-            {["All", "Unread", "Groups", "Request"].map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`flex-1 py-2 text-sm font-semibold border-b-2 cursor-pointer ${
-                  activeCategory === category
-                    ? "text-blue-600 border-blue-600"
-                    : "text-gray-500 border-transparent hover:text-gray-800"
-                }`}
-              >
-                {category}
-              </button>
+          {/* Category Buttons with Badges */}
+          <div className="flex justify-between px-3 border-b border-gray-200 relative">
+            {categories.map(({ name, count }) => (
+              <div key={name} className="relative flex-1 text-center">
+                <button
+                  onClick={() => setActiveCategory(name)}
+                  className={`relative w-full py-2 text-sm font-semibold border-b-2 cursor-pointer ${
+                    activeCategory === name
+                      ? "text-blue-600 border-blue-600"
+                      : "text-gray-500 border-transparent hover:text-gray-800"
+                  }`}
+                >
+                  {name}
+                  {name !== "All" && renderBadge(count)}
+                </button>
+              </div>
             ))}
           </div>
 

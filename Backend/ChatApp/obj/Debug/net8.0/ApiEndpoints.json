@@ -1,8 +1,40 @@
 [
   {
     "ContainingType": "ChatApp.Controllers.ChatController",
-    "Method": "GetFriends",
+    "Method": "GetAllChats",
+    "RelativePath": "api/Chat/all-chats/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatApp.Controllers.ChatController",
+    "Method": "GetChatFriends",
     "RelativePath": "api/Chat/friends/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatApp.Controllers.ChatController",
+    "Method": "GetChatRequests",
+    "RelativePath": "api/Chat/requests/{userId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -32,43 +64,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ChatApp.Controllers.MessagesController",
-    "Method": "GetConversation",
-    "RelativePath": "api/Messages/conversation",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "user1Id",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "user2Id",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ChatApp.Controllers.MessagesController",
-    "Method": "SendMessage",
-    "RelativePath": "api/Messages/send",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "message",
-        "Type": "ChatApp.Models.Message",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "ChatApp.Controllers.TestController",
     "Method": "Ping",
     "RelativePath": "api/Test/ping",
@@ -76,6 +71,59 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatApp.Controllers.UserMessagesController",
+    "Method": "GetConversation",
+    "RelativePath": "api/UserMessages/conversation/{userId}/{otherUserId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "otherUserId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatApp.Controllers.UserMessagesController",
+    "Method": "MarkAsRead",
+    "RelativePath": "api/UserMessages/mark-read/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatApp.Controllers.UserMessagesController",
+    "Method": "SendMessage",
+    "RelativePath": "api/UserMessages/send",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "message",
+        "Type": "ChatApp.Models.UserMessage",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

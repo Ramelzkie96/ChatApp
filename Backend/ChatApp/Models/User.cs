@@ -13,7 +13,6 @@
         // ✅ New: Online/Offline status
         public bool IsOnline { get; set; } = false;
 
-        // ✅ Friendships related to this user
-        public ICollection<Friendship> Friendships { get; set; } = new List<Friendship>();
+
     }
 }

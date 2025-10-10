@@ -28,6 +28,52 @@
         }
       }
     },
+    "/api/Chat/all-chats/{userId}": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Chat/requests/{userId}": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/ChatList": {
       "get": {
         "tags": [
@@ -49,26 +95,38 @@
         }
       }
     },
-    "/api/Messages/send": {
+    "/api/Test/ping": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserMessages/send": {
       "post": {
         "tags": [
-          "Messages"
+          "UserMessages"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Message"
+                "$ref": "#/components/schemas/UserMessage"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Message"
+                "$ref": "#/components/schemas/UserMessage"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Message"
+                "$ref": "#/components/schemas/UserMessage"
               }
             }
           }
@@ -80,23 +138,25 @@
         }
       }
     },
-    "/api/Messages/conversation": {
+    "/api/UserMessages/conversation/{userId}/{otherUserId}": {
       "get": {
         "tags": [
-          "Messages"
+          "UserMessages"
         ],
         "parameters": [
           {
-            "name": "user1Id",
-            "in": "query",
+            "name": "userId",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
             }
           },
           {
-            "name": "user2Id",
-            "in": "query",
+            "name": "otherUserId",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -110,10 +170,21 @@
         }
       }
     },
-    "/api/Test/ping": {
-      "get": {
+    "/api/UserMessages/mark-read/{id}": {
+      "put": {
         "tags": [
-          "Test"
+          "UserMessages"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -271,37 +342,6 @@
   },
   "components": {
     "schemas": {
-      "Friendship": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "requesterId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "requester": {
-            "$ref": "#/components/schemas/User"
-          },
-          "addresseeId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "addressee": {
-            "$ref": "#/components/schemas/User"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "isAccepted": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
       "LoginDto": {
         "type": "object",
         "properties": {
@@ -312,41 +352,6 @@
           "password": {
             "type": "string",
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Message": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "senderId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "sender": {
-            "$ref": "#/components/schemas/User"
-          },
-          "receiverId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "receiver": {
-            "$ref": "#/components/schemas/User"
-          },
-          "content": {
-            "type": "string",
-            "nullable": true
-          },
-          "sentAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "isRead": {
-            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -376,13 +381,45 @@
           },
           "isOnline": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserMessage": {
+        "required": [
+          "content"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
           },
-          "friendships": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Friendship"
-            },
-            "nullable": true
+          "senderId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "receiverId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "sentAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isRead": {
+            "type": "boolean"
+          },
+          "sender": {
+            "$ref": "#/components/schemas/User"
+          },
+          "receiver": {
+            "$ref": "#/components/schemas/User"
           }
         },
         "additionalProperties": false

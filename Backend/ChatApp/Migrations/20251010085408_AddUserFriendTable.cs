@@ -5,7 +5,7 @@
 namespace ChatApp.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateMessageTable : Migration
+    public partial class AddUserFriendTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

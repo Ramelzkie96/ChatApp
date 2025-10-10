@@ -3,12 +3,60 @@
   "WorkspaceRootPath": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\ssasg\\source\\repos\\chatapp\\backend\\chatapp\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\ssasg\\source\\repos\\chatapp\\backend\\chatapp\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Migrations\\20251010085408_AddUserFriendTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20251010085408_AddUserFriendTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\ssasg\\source\\repos\\chatapp\\backend\\chatapp\\models\\userfriend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:models\\userfriend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\ssasg\\source\\repos\\chatapp\\backend\\chatapp\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\ssasg\\source\\repos\\chatapp\\backend\\chatapp\\models\\usermessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:models\\usermessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\ssasg\\source\\repos\\chatapp\\backend\\chatapp\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\ssasg\\source\\repos\\chatapp\\backend\\chatapp\\controllers\\chatlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:controllers\\chatlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\ssasg\\source\\repos\\chatapp\\backend\\chatapp\\controllers\\usermessagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:controllers\\usermessagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Migrations\\20251008094337_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20251008094337_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Migrations\\20251008093828_AddUserMessageTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20251008093828_AddUserMessageTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\ssasg\\source\\repos\\chatapp\\backend\\chatapp\\models\\sendmessagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:models\\sendmessagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\ssasg\\source\\repos\\chatapp\\backend\\chatapp\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\ssasg\\source\\repos\\chatapp\\backend\\chatapp\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|c:\\users\\ssasg\\source\\repos\\chatapp\\backend\\chatapp\\migrations\\20251008094515_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C4B9704-8C28-442D-9249-5E51F809933A}|ChatApp.csproj|solutionrelative:migrations\\20251008094515_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,24 +66,174 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MessagesController.cs",
-              "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Controllers\\MessagesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\MessagesController.cs",
-              "ToolTip": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Controllers\\MessagesController.cs",
-              "RelativeToolTip": "Controllers\\MessagesController.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAwEgAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "20251010085408_AddUserFriendTable.cs",
+              "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Migrations\\20251010085408_AddUserFriendTable.cs",
+              "RelativeDocumentMoniker": "Migrations\\20251010085408_AddUserFriendTable.cs",
+              "ToolTip": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Migrations\\20251010085408_AddUserFriendTable.cs",
+              "RelativeToolTip": "Migrations\\20251010085408_AddUserFriendTable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-05T14:05:29.762Z",
+              "WhenOpened": "2025-10-10T08:54:08.98Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "UserFriend.cs",
+              "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Models\\UserFriend.cs",
+              "RelativeDocumentMoniker": "Models\\UserFriend.cs",
+              "ToolTip": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Models\\UserFriend.cs",
+              "RelativeToolTip": "Models\\UserFriend.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAqwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-10T08:53:28.422Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ChatController.cs",
+              "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Controllers\\ChatController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ChatController.cs",
+              "ToolTip": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Controllers\\ChatController.cs",
+              "RelativeToolTip": "Controllers\\ChatController.cs",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAkwK8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-10T03:50:08.956Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ChatListController.cs",
+              "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Controllers\\ChatListController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ChatListController.cs",
+              "ToolTip": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Controllers\\ChatListController.cs",
+              "RelativeToolTip": "Controllers\\ChatListController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-10T03:49:22.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserMessagesController.cs",
+              "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Controllers\\UserMessagesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserMessagesController.cs",
+              "ToolTip": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Controllers\\UserMessagesController.cs",
+              "RelativeToolTip": "Controllers\\UserMessagesController.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAowEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:52:12.986Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "20251008094515_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Migrations\\20251008094515_InitialCreate.cs",
+              "RelativeDocumentMoniker": "Migrations\\20251008094515_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Migrations\\20251008094515_InitialCreate.cs",
+              "RelativeToolTip": "Migrations\\20251008094515_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:45:15.749Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "20251008094337_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Migrations\\20251008094337_InitialCreate.cs",
+              "RelativeDocumentMoniker": "Migrations\\20251008094337_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Migrations\\20251008094337_InitialCreate.cs",
+              "RelativeToolTip": "Migrations\\20251008094337_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:43:37.526Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "20251008093828_AddUserMessageTable.cs",
+              "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Migrations\\20251008093828_AddUserMessageTable.cs",
+              "RelativeDocumentMoniker": "Migrations\\20251008093828_AddUserMessageTable.cs",
+              "ToolTip": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Migrations\\20251008093828_AddUserMessageTable.cs",
+              "RelativeToolTip": "Migrations\\20251008093828_AddUserMessageTable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:38:29.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserMessage.cs",
+              "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Models\\UserMessage.cs",
+              "RelativeDocumentMoniker": "Models\\UserMessage.cs",
+              "ToolTip": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Models\\UserMessage.cs",
+              "RelativeToolTip": "Models\\UserMessage.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:35:34.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T08:25:38.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApplicationDBContext.cs",
+              "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Data\\ApplicationDBContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDBContext.cs",
+              "ToolTip": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Data\\ApplicationDBContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDBContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAgwA8AAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T08:25:02.248Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SendMessageDto.cs",
+              "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Models\\SendMessageDto.cs",
+              "RelativeDocumentMoniker": "Models\\SendMessageDto.cs",
+              "ToolTip": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Models\\SendMessageDto.cs",
+              "RelativeToolTip": "Models\\SendMessageDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T08:12:05.086Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Controllers\\UsersController.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T07:58:10.432Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Message.cs",
               "DocumentMoniker": "C:\\Users\\ssasg\\source\\repos\\ChatApp\\Backend\\ChatApp\\Models\\Message.cs",
               "RelativeDocumentMoniker": "Models\\Message.cs",
@@ -43,8 +241,7 @@
               "RelativeToolTip": "Models\\Message.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-05T08:13:23.339Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-05T08:13:23.339Z"
             }
           ]
         }

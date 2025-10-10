@@ -34,7 +34,7 @@ const Navbar = () => {
         const data = await response.json();
         toast.success(data.message || "Logged out successfully");
       } else {
-        toast.error("Logout failed!");
+        //toast.error("Logout failed!");
       }
     } catch (err) {
       console.error("Logout request failed:", err);
