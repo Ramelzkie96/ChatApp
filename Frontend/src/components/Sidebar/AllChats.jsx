@@ -4,22 +4,23 @@ import axios from "axios";
 import ChatListItem from "../ChatListItem";
 
 const AllChats = ({ currentUserId, onSelectChat }) => {
-  const [friends, setFriends] = useState([]);
-  const API_BASE = "https://localhost:7085"; // ✅ backend base URL
+  const [chats, setChats] = useState([]);
+  const API_BASE = "https://localhost:7085";
 
   useEffect(() => {
     if (!currentUserId) return;
 
-    const fetchFriends = async () => {
+    const fetchChats = async () => {
       try {
-        const res = await axios.get(`${API_BASE}/api/chat/friends/${currentUserId}`);
-        setFriends(res.data);
+        // ✅ Fetch only chats you initiated
+        const res = await axios.get(`${API_BASE}/api/chat/all-chats/${currentUserId}`);
+        setChats(res.data);
       } catch (err) {
-        console.error("Error fetching friends:", err);
+        console.error("Error fetching all chats:", err);
       }
     };
 
-    fetchFriends();
+    fetchChats();
   }, [currentUserId]);
 
   const formatTime = (timeAgo) => {
@@ -34,46 +35,38 @@ const AllChats = ({ currentUserId, onSelectChat }) => {
     return date.toLocaleDateString();
   };
 
-  if (!friends || friends.length === 0) {
+  if (!chats || chats.length === 0) {
     return <p className="text-center text-gray-500 mt-4">No conversations yet.</p>;
   }
 
   return (
     <div className="overflow-y-auto max-h-[calc(100vh-100px)]">
-      {friends.map((friend) => {
-        const profilePic = friend.profilePictureUrl
-          ? `${API_BASE}${friend.profilePictureUrl.startsWith("/") ? "" : "/"}${friend.profilePictureUrl}`
+      {chats.map((chat) => {
+        const profilePic = chat.profilePictureUrl
+          ? `${API_BASE}${chat.profilePictureUrl.startsWith("/") ? "" : "/"}${chat.profilePictureUrl}`
           : `${API_BASE}/images/user-image.jpg`;
 
-        // ✅ Add "You:" if current user sent the last message
-        const lastMessageText =
-          friend.lastMessageSenderId === currentUserId
-            ? `You: ${friend.lastMessage || ""}`
-            : friend.lastMessage || "No messages yet";
-
-        // ✅ Build ChatListItem props
         const chatItem = {
-          id: friend.id,
-          name: friend.username,
+          id: chat.id,
+          name: chat.username,
           profilePictureUrl: profilePic,
-          lastMessage: lastMessageText,
-          isOnline: friend.isOnline,
-          timeAgo: formatTime(friend.timeAgo),
+          lastMessage: chat.lastMessage || "No messages yet",
+          isOnline: chat.isOnline,
+          timeAgo: formatTime(chat.timeAgo),
         };
 
-        // ✅ Normalize object for ChatWindow
         const normalizedChat = {
-          id: friend.id,
-          name: friend.username,
+          id: chat.id,
+          name: chat.username,
           avatar: profilePic,
-          isOnline: friend.isOnline,
+          isOnline: chat.isOnline,
         };
 
         return (
           <ChatListItem
-            key={friend.id}
+            key={chat.id}
             chat={chatItem}
-            onClick={() => onSelectChat(normalizedChat)} // ✅ now passes correct fields
+            onClick={() => onSelectChat(normalizedChat)}
           />
         );
       })}

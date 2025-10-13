@@ -5,21 +5,21 @@ namespace ChatApp.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        // Constructor
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
 
-        // ✅ DbSets (tables in database)
+        // ✅ DbSets
         public DbSet<User> Users { get; set; }
-        public DbSet<UserMessage> UserMessages { get; set; }  // 👈 Added this
+        public DbSet<UserMessage> UserMessages { get; set; }
+        public DbSet<UserFriendship> UserFriendships { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // ✅ Define relationships to prevent circular cascade deletes
+            // ✅ USER MESSAGE relationships
             modelBuilder.Entity<UserMessage>()
                 .HasOne(m => m.Sender)
                 .WithMany()
@@ -31,6 +31,19 @@ namespace ChatApp.Data
                 .WithMany()
                 .HasForeignKey(m => m.ReceiverId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            // ✅ USER FRIENDSHIP relationships
+            modelBuilder.Entity<UserFriendship>()
+                .HasOne(f => f.User)
+                .WithMany()
+                .HasForeignKey(f => f.UserId)
+                .OnDelete(DeleteBehavior.Restrict);  // prevent cascade path
+
+            modelBuilder.Entity<UserFriendship>()
+                .HasOne(f => f.Friend)
+                .WithMany()
+                .HasForeignKey(f => f.FriendId)
+                .OnDelete(DeleteBehavior.Restrict);  // prevent cascade path
         }
     }
 }

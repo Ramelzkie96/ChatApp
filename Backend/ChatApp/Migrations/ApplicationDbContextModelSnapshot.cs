@@ -54,6 +54,40 @@ namespace ChatApp.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("ChatApp.Models.UserFriendship", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FriendId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FriendId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserFriendships");
+                });
+
             modelBuilder.Entity("ChatApp.Models.UserMessage", b =>
                 {
                     b.Property<int>("Id")
@@ -86,6 +120,25 @@ namespace ChatApp.Migrations
                     b.HasIndex("SenderId");
 
                     b.ToTable("UserMessages");
+                });
+
+            modelBuilder.Entity("ChatApp.Models.UserFriendship", b =>
+                {
+                    b.HasOne("ChatApp.Models.User", "Friend")
+                        .WithMany()
+                        .HasForeignKey("FriendId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ChatApp.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Friend");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ChatApp.Models.UserMessage", b =>

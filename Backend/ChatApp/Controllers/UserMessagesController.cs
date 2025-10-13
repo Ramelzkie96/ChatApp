@@ -2,6 +2,7 @@
 using ChatApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,7 +26,6 @@ namespace ChatApp.Controllers
             if (message == null || string.IsNullOrWhiteSpace(message.Content))
                 return BadRequest("Message content cannot be empty.");
 
-            // ✅ Optional: Validate that sender and receiver exist
             var senderExists = await _context.Users.AnyAsync(u => u.Id == message.SenderId);
             var receiverExists = await _context.Users.AnyAsync(u => u.Id == message.ReceiverId);
 
@@ -34,11 +34,40 @@ namespace ChatApp.Controllers
 
             message.SentAt = DateTime.UtcNow;
             _context.UserMessages.Add(message);
-            await _context.SaveChangesAsync();
 
-            // Return created message
+            var existingFriendship = await _context.UserFriendships.FirstOrDefaultAsync(f =>
+                (f.UserId == message.SenderId && f.FriendId == message.ReceiverId) ||
+                (f.UserId == message.ReceiverId && f.FriendId == message.SenderId)
+            );
+
+            if (existingFriendship == null)
+            {
+                var newFriendship = new UserFriendship
+                {
+                    UserId = message.SenderId,
+                    FriendId = message.ReceiverId,
+                    Status = "Pending",
+                    CreatedAt = DateTime.UtcNow
+                };
+
+                _context.UserFriendships.Add(newFriendship);
+            }
+            else
+            {
+                // If there is a pending friendship and the original friend is now the sender,
+                // mark as accepted and set UpdatedAt
+                if (existingFriendship.Status == "Pending" &&
+                    existingFriendship.FriendId == message.SenderId)
+                {
+                    existingFriendship.Status = "Accepted";
+                    existingFriendship.UpdatedAt = DateTime.UtcNow;
+                }
+            }
+
+            await _context.SaveChangesAsync();
             return Ok(message);
         }
+
 
         // ✅ GET: api/UserMessages/conversation/1/2
         [HttpGet("conversation/{userId}/{otherUserId}")]
@@ -64,6 +93,7 @@ namespace ChatApp.Controllers
 
             msg.IsRead = true;
             await _context.SaveChangesAsync();
+
             return Ok(msg);
         }
     }
