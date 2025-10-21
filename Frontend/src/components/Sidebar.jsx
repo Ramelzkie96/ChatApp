@@ -18,11 +18,13 @@ const Sidebar = ({ onSelectChat }) => {
   const [groupCount, setGroupCount] = useState(5);
   const [requestCount, setRequestCount] = useState(2);
 
+  // ✅ Load current user from localStorage
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     setCurrentUser(user);
   }, []);
 
+  // ✅ Fetch chats for the logged-in user
   useEffect(() => {
     if (!currentUser) return;
 
@@ -33,6 +35,7 @@ const Sidebar = ({ onSelectChat }) => {
         );
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
+
         const filteredChats = data.filter(
           (chat) => chat.name !== currentUser.username
         );
@@ -45,40 +48,55 @@ const Sidebar = ({ onSelectChat }) => {
     fetchChats();
   }, [currentUser]);
 
+  // ✅ Handle returning from search
   const handleBackFromSearch = () => {
     setIsSearching(false);
     setSearchQuery("");
     setActiveCategory("All");
   };
 
+  // ✅ Dynamically render the chat list based on active category
   const renderCategory = () => {
+    if (!currentUser) {
+      return <div className="text-center text-gray-500 mt-5">Loading user...</div>;
+    }
+
     switch (activeCategory) {
       case "Unread":
         return <UnreadChats onSelectChat={onSelectChat} />;
+
       case "Groups":
         return <GroupsChats onSelectChat={onSelectChat} />;
+
       case "Request":
-        return <RequestChats onSelectChat={onSelectChat} />;
+        return (
+          <RequestChats
+            userId={currentUser.id}
+            onSelectChat={onSelectChat}
+          />
+        );
+
       default:
         return (
           <AllChats
-            currentUserId={currentUser?.id}
+            currentUserId={currentUser.id}
             onSelectChat={onSelectChat}
           />
         );
     }
   };
 
- const renderBadge = (count) => {
-  if (!count || count <= 0) return null;
-  return (
-    <span className="absolute -top-1 -right-0.2 bg-red-500 text-white text-[10px] font-bold rounded-full px-[5px] py-[1px] shadow-sm">
-      {count}
-    </span>
-  );
-};
+  // ✅ Badge for counts
+  const renderBadge = (count) => {
+    if (!count || count <= 0) return null;
+    return (
+      <span className="absolute -top-1 -right-0.5 bg-red-500 text-white text-[10px] font-bold rounded-full px-[5px] py-[1px] shadow-sm">
+        {count}
+      </span>
+    );
+  };
 
-
+  // ✅ Tab categories
   const categories = [
     { name: "All" },
     { name: "Unread", count: unreadCount },
@@ -88,7 +106,7 @@ const Sidebar = ({ onSelectChat }) => {
 
   return (
     <div className="h-full flex flex-col bg-white border-r border-gray-200">
-      {/* Header Search Bar */}
+      {/* 🔍 Header Search Bar */}
       <div className="p-3 flex items-center">
         <div className="relative flex-1 flex items-center">
           {isSearching ? (
@@ -113,7 +131,7 @@ const Sidebar = ({ onSelectChat }) => {
         </div>
       </div>
 
-      {/* 👇 Search results vs normal chat list */}
+      {/* 💬 Search results or normal chat list */}
       {isSearching ? (
         <ChatSearchArea
           searchQuery={searchQuery}
@@ -125,7 +143,7 @@ const Sidebar = ({ onSelectChat }) => {
         />
       ) : (
         <>
-          {/* Category Buttons with Badges */}
+          {/* 🔘 Category Buttons with Badges */}
           <div className="flex justify-between px-3 border-b border-gray-200 relative">
             {categories.map(({ name, count }) => (
               <div key={name} className="relative flex-1 text-center">
@@ -144,7 +162,7 @@ const Sidebar = ({ onSelectChat }) => {
             ))}
           </div>
 
-          {/* Chat List */}
+          {/* 🗂️ Chat List */}
           <div className="flex-1 overflow-y-auto mt-5">{renderCategory()}</div>
         </>
       )}

@@ -32,6 +32,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ChatApp.Controllers.RequestController",
+    "Method": "AcceptRequest",
+    "RelativePath": "api/Request/accept",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "ChatApp.Controllers.AcceptRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatApp.Controllers.RequestController",
+    "Method": "BlockRequest",
+    "RelativePath": "api/Request/block",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "ChatApp.Controllers.AcceptRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ChatApp.Controllers.TestController",
     "Method": "Ping",
     "RelativePath": "api/Test/ping",

@@ -13,7 +13,10 @@ const AllChats = ({ currentUserId, onSelectChat }) => {
     const fetchChats = async () => {
       try {
         // ✅ Fetch only chats you initiated
-        const res = await axios.get(`${API_BASE}/api/chat/all-chats/${currentUserId}`);
+        const res = await axios.get(
+  `https://localhost:7085/api/ChatList?currentUser=${currentUserUsername}`
+);
+
         setChats(res.data);
       } catch (err) {
         console.error("Error fetching all chats:", err);
