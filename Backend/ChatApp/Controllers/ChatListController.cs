@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ChatApp.Data;
-using ChatApp.Models;
+using System;
+using System.Linq;
 
 namespace ChatApp.Controllers
 {
@@ -15,7 +17,8 @@ namespace ChatApp.Controllers
             _context = context;
         }
 
-        // GET: api/chatlist
+        // ✅ 1️⃣ Used in login or general user listing
+        // GET: api/chatlist?currentUser=username
         [HttpGet]
         public IActionResult GetChatList([FromQuery] string currentUser)
         {
@@ -25,6 +28,7 @@ namespace ChatApp.Controllers
                 .Where(u => u.Username != currentUser)
                 .Select(u => new
                 {
+                    id = u.Id,
                     name = u.Username,
                     lastMessage = "Messages and calls",
                     timeAgo = "just now",
@@ -37,6 +41,59 @@ namespace ChatApp.Controllers
 
             return Ok(users);
         }
+
+        // ✅ 2️⃣ Used in AllChats.jsx — show all users with messages (even Pending)
+        // GET: api/chatlist/{userId}
+        [HttpGet("{userId}")]
+        public IActionResult GetUserChats(int userId)
+        {
+            var baseUrl = $"{Request.Scheme}://{Request.Host}";
+
+            var chats = _context.UserMessages
+                .Include(m => m.Sender)
+                .Include(m => m.Receiver)
+                .Where(m => m.SenderId == userId || m.ReceiverId == userId)
+                .ToList()
+                .GroupBy(m => m.SenderId == userId ? m.ReceiverId : m.SenderId)
+                .Select(group =>
+                {
+                    var lastMessage = group.OrderByDescending(m => m.SentAt).FirstOrDefault();
+                    if (lastMessage == null) return null;
+
+                    // ✅ Find friendship (Accepted or Pending)
+                    var friendship = _context.UserFriendships
+                        .FirstOrDefault(f =>
+                            (f.UserId == userId && f.FriendId == group.Key) ||
+                            (f.FriendId == userId && f.UserId == group.Key));
+
+                    // 🔹 Skip if Pending and current user is NOT the sender of the request
+                    if (friendship != null && friendship.Status == "Pending" && friendship.UserId != userId)
+                        return null;
+
+                    var otherUser = lastMessage.SenderId == userId
+                        ? lastMessage.Receiver
+                        : lastMessage.Sender;
+
+                    return new
+                    {
+                        id = otherUser.Id,
+                        username = otherUser.Username,
+                        profilePictureUrl = string.IsNullOrEmpty(otherUser.ProfilePictureUrl)
+                            ? $"{baseUrl}/images/user-image.jpg"
+                            : $"{baseUrl}{otherUser.ProfilePictureUrl}",
+                        lastMessage = lastMessage.Content ?? "",
+                        timeAgo = lastMessage.SentAt.ToLocalTime().ToString("yyyy-MM-ddTHH:mm:ss"),
+                        isOnline = otherUser.IsOnline,
+                        status = friendship != null ? friendship.Status : "NoFriendship"
+                    };
+                })
+                .Where(c => c != null) // ✅ remove skipped records
+                .OrderByDescending(c => c.timeAgo)
+                .ToList();
+
+            return Ok(chats);
+        }
+
 
     }
 }

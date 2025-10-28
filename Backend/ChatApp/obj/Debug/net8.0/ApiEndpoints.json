@@ -16,6 +16,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ChatApp.Controllers.ChatListController",
+    "Method": "GetUserChats",
+    "RelativePath": "api/ChatList/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ChatApp.Controllers.RequestController",
     "Method": "GetPendingRequests",
     "RelativePath": "api/Request/{userId}",

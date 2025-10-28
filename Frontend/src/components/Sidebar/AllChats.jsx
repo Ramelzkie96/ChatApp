@@ -13,9 +13,7 @@ const AllChats = ({ currentUserId, onSelectChat }) => {
     const fetchChats = async () => {
       try {
         // ✅ Fetch only chats you initiated
-        const res = await axios.get(
-  `https://localhost:7085/api/ChatList?currentUser=${currentUserUsername}`
-);
+       const res = await axios.get(`https://localhost:7085/api/chatlist/${currentUserId}`);
 
         setChats(res.data);
       } catch (err) {
@@ -43,38 +41,37 @@ const AllChats = ({ currentUserId, onSelectChat }) => {
   }
 
   return (
-    <div className="overflow-y-auto max-h-[calc(100vh-100px)]">
-      {chats.map((chat) => {
-        const profilePic = chat.profilePictureUrl
-          ? `${API_BASE}${chat.profilePictureUrl.startsWith("/") ? "" : "/"}${chat.profilePictureUrl}`
-          : `${API_BASE}/images/user-image.jpg`;
+  <div className="overflow-y-auto max-h-[calc(100vh-100px)]">
+    {chats.map((chat) => {
+      // ✅ FIXED: don't prepend API_BASE again
+      const profilePic = chat.profilePictureUrl || `${API_BASE}/images/user-image.jpg`;
 
-        const chatItem = {
-          id: chat.id,
-          name: chat.username,
-          profilePictureUrl: profilePic,
-          lastMessage: chat.lastMessage || "No messages yet",
-          isOnline: chat.isOnline,
-          timeAgo: formatTime(chat.timeAgo),
-        };
+      const chatItem = {
+        id: chat.id,
+        name: chat.username,
+        profilePictureUrl: profilePic,
+        lastMessage: chat.lastMessage || "No messages yet",
+        isOnline: chat.isOnline,
+        timeAgo: formatTime(chat.timeAgo),
+      };
 
-        const normalizedChat = {
-          id: chat.id,
-          name: chat.username,
-          avatar: profilePic,
-          isOnline: chat.isOnline,
-        };
+      const normalizedChat = {
+        id: chat.id,
+        name: chat.username,
+        avatar: profilePic,
+        isOnline: chat.isOnline,
+      };
 
-        return (
-          <ChatListItem
-            key={chat.id}
-            chat={chatItem}
-            onClick={() => onSelectChat(normalizedChat)}
-          />
-        );
-      })}
-    </div>
-  );
+      return (
+        <ChatListItem
+          key={chat.id}
+          chat={chatItem}
+          onClick={() => onSelectChat(normalizedChat)}
+        />
+      );
+    })}
+  </div>
+);
 };
 
 export default AllChats;
