@@ -8,21 +8,25 @@ const AllChats = ({ currentUserId, onSelectChat }) => {
   const API_BASE = "https://localhost:7085";
 
   useEffect(() => {
-    if (!currentUserId) return;
+  if (!currentUserId) return;
 
-    const fetchChats = async () => {
-      try {
-        // ✅ Fetch only chats you initiated
-       const res = await axios.get(`https://localhost:7085/api/chatlist/${currentUserId}`);
+  const fetchChats = async () => {
+    try {
+      const res = await axios.get(`https://localhost:7085/api/chatlist/${currentUserId}`);
+      setChats(res.data);
+    } catch (err) {
+      console.error("Error fetching all chats:", err);
+    }
+  };
 
-        setChats(res.data);
-      } catch (err) {
-        console.error("Error fetching all chats:", err);
-      }
-    };
+  fetchChats();
 
-    fetchChats();
-  }, [currentUserId]);
+  // ✅ Poll every 3 seconds
+  const interval = setInterval(fetchChats, 1000);
+
+  return () => clearInterval(interval);
+}, [currentUserId]);
+
 
   const formatTime = (timeAgo) => {
     if (!timeAgo) return "";

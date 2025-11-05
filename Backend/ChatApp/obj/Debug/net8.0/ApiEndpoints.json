@@ -57,7 +57,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "ChatApp.Controllers.AcceptRequestModel",
+        "Type": "ChatApp.Controllers.RequestController\u002BAcceptRequestModel",
         "IsRequired": true
       }
     ],
@@ -73,7 +73,23 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "ChatApp.Controllers.AcceptRequestModel",
+        "Type": "ChatApp.Controllers.RequestController\u002BAcceptRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatApp.Controllers.RequestController",
+    "Method": "GetPendingRequestCount",
+    "RelativePath": "api/Request/count/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

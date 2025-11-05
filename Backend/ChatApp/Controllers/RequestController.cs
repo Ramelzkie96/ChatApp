@@ -29,7 +29,7 @@ namespace ChatApp.Controllers
                 .Include(f => f.User)
                 .Include(f => f.Friend)
                 .Where(f => f.FriendId == userId && f.Status == "Pending")
-                .OrderByDescending(f => f.CreatedAt) // ✅ Sort newest first
+                .OrderByDescending(f => f.CreatedAt)
                 .ToList()
                 .Select(f => new
                 {
@@ -41,11 +41,21 @@ namespace ChatApp.Controllers
                     lastMessage = "Wants to connect with you",
                     timeAgo = GetTimeAgo(f.CreatedAt),
                     isOnline = f.User.IsOnline,
-                    status = f.Status // ✅ Include status for frontend (Pending, Accepted, Blocked)
+                    status = f.Status
                 })
                 .ToList();
 
             return Ok(pendingRequests);
+        }
+
+        // ✅ NEW: GET pending count
+        [HttpGet("count/{userId}")]
+        public async Task<IActionResult> GetPendingRequestCount(int userId)
+        {
+            var count = await _context.UserFriendships
+                .CountAsync(r => r.FriendId == userId && r.Status == "Pending");
+
+            return Ok(new { count });
         }
 
         // ✅ POST: api/request/accept
@@ -66,7 +76,7 @@ namespace ChatApp.Controllers
             return Ok(new { message = "Friend request accepted successfully." });
         }
 
-        // ✅ POST: api/request/block (replaces decline)
+        // ✅ POST: api/request/block
         [HttpPost("block")]
         public async Task<IActionResult> BlockRequest([FromBody] AcceptRequestModel model)
         {
@@ -101,12 +111,12 @@ namespace ChatApp.Controllers
 
             return dateTime.ToLocalTime().ToString("MMM dd, yyyy");
         }
-    }
 
-    // ✅ Helper DTO
-    public class AcceptRequestModel
-    {
-        public int RequesterId { get; set; }
-        public int ReceiverId { get; set; }
+        // ✅ Helper DTO
+        public class AcceptRequestModel
+        {
+            public int RequesterId { get; set; }
+            public int ReceiverId { get; set; }
+        }
     }
 }

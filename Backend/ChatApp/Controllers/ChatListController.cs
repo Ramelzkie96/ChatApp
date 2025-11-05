@@ -60,19 +60,27 @@ namespace ChatApp.Controllers
                     var lastMessage = group.OrderByDescending(m => m.SentAt).FirstOrDefault();
                     if (lastMessage == null) return null;
 
-                    // ✅ Find friendship (Accepted or Pending)
+                    // ✅ Get friendship between users
                     var friendship = _context.UserFriendships
                         .FirstOrDefault(f =>
                             (f.UserId == userId && f.FriendId == group.Key) ||
                             (f.FriendId == userId && f.UserId == group.Key));
 
-                    // 🔹 Skip if Pending and current user is NOT the sender of the request
+                    // 🚫 Skip if friendship is Blocked
+                    if (friendship != null && friendship.Status == "Blocked")
+                        return null;
+
+                    // 🚫 Skip if Pending and current user didn’t send the request
                     if (friendship != null && friendship.Status == "Pending" && friendship.UserId != userId)
                         return null;
 
                     var otherUser = lastMessage.SenderId == userId
                         ? lastMessage.Receiver
                         : lastMessage.Sender;
+
+                    string lastMessageText = lastMessage.SenderId == userId
+                        ? $"You: {lastMessage.Content}"
+                        : lastMessage.Content;
 
                     return new
                     {
@@ -81,19 +89,18 @@ namespace ChatApp.Controllers
                         profilePictureUrl = string.IsNullOrEmpty(otherUser.ProfilePictureUrl)
                             ? $"{baseUrl}/images/user-image.jpg"
                             : $"{baseUrl}{otherUser.ProfilePictureUrl}",
-                        lastMessage = lastMessage.Content ?? "",
+                        lastMessage = lastMessageText ?? "",
                         timeAgo = lastMessage.SentAt.ToLocalTime().ToString("yyyy-MM-ddTHH:mm:ss"),
                         isOnline = otherUser.IsOnline,
                         status = friendship != null ? friendship.Status : "NoFriendship"
                     };
                 })
-                .Where(c => c != null) // ✅ remove skipped records
+                .Where(c => c != null)
                 .OrderByDescending(c => c.timeAgo)
                 .ToList();
 
             return Ok(chats);
         }
-
 
     }
 }

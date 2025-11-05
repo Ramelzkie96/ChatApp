@@ -44,10 +44,11 @@ const Navbar = () => {
 
   // ✅ Delay navigation slightly so user sees the toast
   setTimeout(() => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    navigate("/login");
-  }, 500);
+  localStorage.removeItem("user");
+  localStorage.removeItem("token");
+  localStorage.removeItem("selectedChat"); // ✅ clear saved chat
+  navigate("/login");
+}, 500);
 };
 
   return (

@@ -47,6 +47,29 @@ const Sidebar = ({ onSelectChat }) => {
 
     fetchChats();
   }, [currentUser]);
+  useEffect(() => {
+  if (!currentUser) return;
+
+  const fetchRequestCount = async () => {
+    try {
+      const res = await fetch(`https://localhost:7085/api/request/count/${currentUser.id}`);
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      const data = await res.json();
+      setRequestCount(data.count);
+    } catch (err) {
+      console.error("Failed to fetch request count:", err);
+      setRequestCount(0);
+    }
+  };
+
+  fetchRequestCount();
+
+  // Optional: poll every 30s to update dynamically
+  const interval = setInterval(fetchRequestCount, 30000);
+
+  return () => clearInterval(interval);
+}, [currentUser]);
+
 
   // ✅ Handle returning from search
   const handleBackFromSearch = () => {
