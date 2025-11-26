@@ -1,3 +1,4 @@
+// ✅ ChatWindow.jsx (updated)
 import React, { useEffect, useRef, useState } from "react";
 import {
   Phone,
@@ -14,7 +15,7 @@ import axios from "axios";
 
 const ChatWindow = ({ selectedChat, messages = [], onNewMessage }) => {
   const scrollContainerRef = useRef(null);
-  const inputRef = useRef(null); // ✅ input reference
+  const inputRef = useRef(null);
   const [message, setMessage] = useState("");
   const [chatMessages, setChatMessages] = useState(messages || []);
   const [isSending, setIsSending] = useState(false);
@@ -22,6 +23,7 @@ const ChatWindow = ({ selectedChat, messages = [], onNewMessage }) => {
   const currentUser = JSON.parse(localStorage.getItem("user") || "{}");
 
   const API_BASE = "https://localhost:7085/api/UserMessages";
+  const FRIEND_API = "https://localhost:7085/api/UserFriendships"; // ✅ for unblock
 
   // ✅ Scroll to bottom smoothly
   const scrollToBottom = () => {
@@ -51,7 +53,7 @@ const ChatWindow = ({ selectedChat, messages = [], onNewMessage }) => {
         console.error("❌ Failed to load messages:", err);
       } finally {
         setIsLoading(false);
-        setTimeout(() => inputRef.current?.focus(), 100); // ✅ focus after loading
+        setTimeout(() => inputRef.current?.focus(), 100);
       }
     };
     fetchMessages();
@@ -78,16 +80,29 @@ const ChatWindow = ({ selectedChat, messages = [], onNewMessage }) => {
       setIsSending(false);
       setTimeout(() => {
         scrollToBottom();
-        inputRef.current?.focus(); // ✅ re-focus input after send
+        inputRef.current?.focus();
       }, 50);
     }
   };
 
-  // ✅ Handle Enter key
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSend();
+    }
+  };
+
+  // ✅ Unblock user
+  const handleUnblock = async () => {
+    try {
+      await axios.put(`${FRIEND_API}/unblock`, {
+        userId: currentUser.id,
+        friendId: selectedChat.id,
+      });
+      alert(`You have unblocked ${selectedChat.name}`);
+      window.location.reload(); // reload to refresh chat list
+    } catch (err) {
+      console.error("❌ Failed to unblock:", err);
     }
   };
 
@@ -98,6 +113,8 @@ const ChatWindow = ({ selectedChat, messages = [], onNewMessage }) => {
       </div>
     );
   }
+
+  const isBlocked = selectedChat.status === "Blocked";
 
   return (
     <div className="flex flex-col flex-1 h-full bg-gray-50 min-h-0">
@@ -125,7 +142,7 @@ const ChatWindow = ({ selectedChat, messages = [], onNewMessage }) => {
         </div>
       </div>
 
-      {/* ✅ Messages area (starts from bottom) */}
+      {/* Messages */}
       <div
         ref={scrollContainerRef}
         className="flex-1 px-6 py-4 bg-gray-100 flex flex-col-reverse overflow-y-auto"
@@ -142,68 +159,82 @@ const ChatWindow = ({ selectedChat, messages = [], onNewMessage }) => {
             </p>
           </div>
         ) : (
-          [...chatMessages]
-            .reverse()
-            .map((msg) => {
-              const isMe = msg.senderId === currentUser.id;
-              return (
+          [...chatMessages].reverse().map((msg) => {
+            const isMe = msg.senderId === currentUser.id;
+            return (
+              <div
+                key={msg.id}
+                className={`flex items-end mb-2 ${
+                  isMe ? "justify-end" : "justify-start"
+                }`}
+              >
+                {!isMe && (
+                  <img
+                    src={selectedChat.avatar}
+                    alt={selectedChat.name}
+                    className="w-8 h-8 rounded-full object-cover mr-2 flex-shrink-0"
+                  />
+                )}
                 <div
-                  key={msg.id}
-                  className={`flex items-end mb-2 ${
-                    isMe ? "justify-end" : "justify-start"
+                  className={`px-4 py-2 rounded-2xl max-w-[70%] text-sm shadow break-words whitespace-pre-wrap ${
+                    isMe
+                      ? "bg-purple-600 text-white rounded-br-none"
+                      : "bg-gray-200 text-gray-800 rounded-bl-none"
                   }`}
                 >
-                  {!isMe && (
-                    <img
-                      src={selectedChat.avatar}
-                      alt={selectedChat.name}
-                      className="w-8 h-8 rounded-full object-cover mr-2 flex-shrink-0"
-                    />
-                  )}
-                  <div
-                    className={`px-4 py-2 rounded-2xl max-w-[70%] text-sm shadow break-words whitespace-pre-wrap ${
-                      isMe
-                        ? "bg-purple-600 text-white rounded-br-none"
-                        : "bg-gray-200 text-gray-800 rounded-bl-none"
-                    }`}
-                    style={{ maxHeight: 200, overflowY: "auto" }}
-                  >
-                    {msg.content}
-                  </div>
+                  {msg.content}
                 </div>
-              );
-            })
+              </div>
+            );
+          })
         )}
       </div>
 
-      {/* ✅ Input Bar */}
+      {/* ✅ Blocked message card */}
+      {isBlocked && (
+        <div className="p-4 border-t bg-yellow-50 border-yellow-300 text-center">
+          <p className="text-gray-700 font-medium mb-2">
+            You have blocked this user.
+          </p>
+          <button
+            onClick={handleUnblock}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          >
+            Unblock
+          </button>
+        </div>
+      )}
+
+      {/* Input Bar (disabled when blocked) */}
       <div className="flex items-center p-3 border-t bg-white space-x-3 border-gray-300">
         <Mic className="w-5 h-5 text-blue-600 cursor-pointer" />
         <Image className="w-5 h-5 text-blue-600 cursor-pointer" />
         <Smile className="w-5 h-5 text-blue-600 cursor-pointer" />
 
         <input
-          ref={inputRef} // ✅ keep reference
+          ref={inputRef}
           type="text"
-          placeholder="Type a message..."
+          placeholder={
+            isBlocked ? "You can't send messages to a blocked user" : "Type a message..."
+          }
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={handleKeyDown}
-          disabled={isSending}
-          autoFocus // ✅ focus when opened
+          disabled={isSending || isBlocked}
           className="flex-1 px-4 py-2 text-sm border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 border-gray-300"
         />
 
-        {message.trim() === "" ? (
-          <ThumbsUp className="w-6 h-6 text-blue-600 cursor-pointer" />
-        ) : (
-          <Send
-            className={`w-6 h-6 text-blue-600 cursor-pointer ${
-              isSending ? "opacity-50 cursor-wait" : ""
-            }`}
-            onClick={handleSend}
-          />
-        )}
+        {!isBlocked &&
+          (message.trim() === "" ? (
+            <ThumbsUp className="w-6 h-6 text-blue-600 cursor-pointer" />
+          ) : (
+            <Send
+              className={`w-6 h-6 text-blue-600 cursor-pointer ${
+                isSending ? "opacity-50 cursor-wait" : ""
+              }`}
+              onClick={handleSend}
+            />
+          ))}
       </div>
     </div>
   );
